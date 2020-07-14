@@ -1,7 +1,6 @@
 <img src="/src/data/Sistel_Logo_Clásico_Negro.png" alt="Logo Sistel" width="125"/>
-**BA Department**
-Jordi Ferrer  - *jferrer@sistel.es*
-
+BA Department</br>
+Jordi Ferrer (jferrer@sistel.es)
 
 # Sistel Qlik Sense menus
 
