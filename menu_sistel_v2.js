@@ -3,7 +3,7 @@ define(['qlik', 'jquery',
     'css!./src/css/main.css',
     'css!./src/css/bootstrap.min.css',
     'text!./src/partials/template.ng.html',
-    './src/js/bootstrap.min'
+    './src/js/bootstrap.bundle.min'
 ], 
 
 function(qlik, $, props, initProps, cssContent, bootstrapCSS, htmlTemplate, bootstrapjs){
