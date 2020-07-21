@@ -3,7 +3,7 @@
 	"description" : "Menu configurable para las APPs de Qlik Sense.",
 	"icon" : "",
 	"type" : "visualization",
-	"version": "2.0.0",
+	"version": "2.1.0",
 	"preview" : "",
 	"author": "Jordi Ferrer",
 	"meta": {

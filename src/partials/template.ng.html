@@ -4,19 +4,19 @@
         <ul class="nav navbar-nav">
             <li class="nav-item" ng-repeat="menu in layout.objetos_menu" ng-mouseenter="hoverEnterEvent($event)" ng-mouseleave="hoverExitEvent($event)" ng-show="menu.visible" ng-class="{dropdown: 'menu.objetos_submenu > 0'}" ng-initialize="hover = false">
                 <!-- OPCIÓN SIN SUBMENÚS -->
-                <a class="nav-link" ng-show="menu.objetos_submenu.length == 0" ng-click="navigate(menu.hoja_destino);">
+                <a class="nav-link hover-effected" ng-show="menu.objetos_submenu.length == 0" ng-click="navigate(menu.hoja_destino);">
                     <i class="lui-icon lui-icon--{{menu.icono}} mr-2"></i>
                     {{menu.titulo}}
                 </a>
                 
                 <!-- OPCIÓN CON SUBMENÚS -->
-                <a ng-show="menu.objetos_submenu.length > 0" class="nav-link dropdown-toggle"  role="button" id="{{$index + '-dropdown'}}" data-toggle="dropdown">
+                <a ng-show="menu.objetos_submenu.length > 0" class="nav-link dropdown-toggle hover-effected"  role="button" id="{{$index + '-dropdown'}}" data-toggle="dropdown">
                     <i class="lui-icon lui-icon--{{menu.icono}} mr-2"></i>    
                     {{menu.titulo}}
                 </a>
                 <!-- Desplegable -->
                 <ul class="dropdown-menu collapse" aria-labelledby="{{$index + '-dropdown'}}" ng-show="menu.objetos_submenu.length > 0" ng-style="{background:  layout.color_fondo.color,color : layout.color_fuente.color}">
-                    <li ng-repeat="submenu in menu.objetos_submenu" ng-click="navigate(submenu.hoja_destino_submenu);hoverExitEvent($event);" ng-mouseenter="hoverEnterEvent($event)" ng-mouseleave="hoverExitEvent($event)"><a>{{submenu.titulo_submenu}}</a></li>
+                    <li class="hover-effected" ng-repeat="submenu in menu.objetos_submenu" ng-click="navigate(submenu.hoja_destino_submenu);hoverExitEvent($event);" ng-mouseenter="hoverEnterEvent($event)" ng-mouseleave="hoverExitEvent($event)"><a>{{submenu.titulo_submenu}}</a></li>
                 </ul>
             </li>
         </ul>

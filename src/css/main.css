@@ -50,3 +50,7 @@
 .dropdown-menu li{
     padding: 0.35rem 1.25rem !important;
 }
+
+.dropdown-menu li a, .nav-link a i {
+    background: transparent !important;
+}

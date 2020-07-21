@@ -32,8 +32,10 @@ function(qlik, $, props, initProps, cssContent, bootstrapCSS, htmlTemplate, boot
                     'background-color': $scope.layout.color_fondo_resaltado.color + ' !important',
                     'color' :  event.target.style.color = $scope.layout.color_fuente_resaltada.color + ' !important'
                 };
-                $(event.target).css(style);
-                $(event.target).find('.nav-link, i').css(style);
+                if(event.target.className.includes('hover-effected')){
+                    $(event.target).css(style);
+                }
+                //$(event.target).find('.nav-link, i').css(style);
             }
 
             $scope.hoverExitEvent = function(event){
@@ -41,8 +43,10 @@ function(qlik, $, props, initProps, cssContent, bootstrapCSS, htmlTemplate, boot
                     'background-color': $scope.layout.color_fondo.color + ' !important',
                     'color' :  $scope.layout.color_fuente.color + ' !important'
                 }
-                $(event.target).css(style);
-                $(event.target).find('.nav-link, i').css(style);
+                if(event.target.className.includes('hover-effected')){
+                    $(event.target).css(style);
+                }
+                //$(event.target).find('.nav-link, i').css(style);
             }
         }]
     }
