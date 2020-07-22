@@ -54,3 +54,7 @@
 .dropdown-menu li a, .nav-link a i {
     background: transparent !important;
 }
+
+.hover-effected{
+    transition: all 0.35s ease;
+}
