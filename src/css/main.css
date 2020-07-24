@@ -4,10 +4,9 @@
 }
 
 .menu-sistel{
-    padding: 0 !important;
-}
-
-.navbar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     padding: 0 !important;
     transition: all 0.3s ease;
     justify-content: end !important;
@@ -19,7 +18,9 @@
 }
 
 .navbar-nav, .navbar-nav ul { 
+    display: flex;
     flex-direction: row !important;
+    flex-wrap: wrap;
     transition: all 0.3s ease;
 }
 
@@ -28,8 +29,9 @@
     cursor: pointer;
 }
 .navbar-nav .nav-link {
+    display: block;
     cursor: pointer;
-    padding: 0.75rem 1.25rem !important;
+    padding: 0.5rem 1.25rem !important;
     font-size: 0.75rem !important;
 }
 

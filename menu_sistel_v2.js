@@ -1,16 +1,16 @@
 define(['qlik', 'jquery',
     './src/properties', './src/initialproperties',
     'css!./src/css/main.css',
-    'css!./src/css/bootstrap.min.css',
+    'css!./src/css/scoped-bootstrap.css',
     'text!./src/partials/template.ng.html',
     './src/js/bootstrap.bundle.min'
 ], 
 
-function(qlik, $, props, initProps, cssContent, bootstrapCSS, htmlTemplate, bootstrapjs){
+function(qlik, $, props, initProps, cssContent, bootstrapCSS ,htmlTemplate, bootstrapjs){
     'use strict';
 
     $( '<style>' ).html(cssContent).appendTo( 'head' );
-    $( '<style>' ).html(bootstrapCSS).appendTo( 'head' );
+    //$( '<style>' ).html(bootstrapCSS).appendTo( 'head' );
 
     return {
         definition: props,
