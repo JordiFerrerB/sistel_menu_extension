@@ -1,0 +1,62 @@
+.qv-object-menu_sistel_v2 .qv-inner-object{
+    overflow: visible !important;
+    z-index: 2147483629;
+}
+
+.menu-sistel{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0 !important;
+    transition: all 0.3s ease;
+    justify-content: end !important;
+}
+
+.navbar-brand {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    padding-left: 1rem;
+}
+
+.navbar-nav, .navbar-nav ul { 
+    display: flex;
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-item{
+    padding: 0 !important;
+    cursor: pointer;
+}
+.navbar-nav .nav-link {
+    display: block;
+    cursor: pointer;
+    padding: 0.5rem 1.25rem !important;
+    font-size: 0.75rem !important;
+}
+
+.lui-icon{
+    font-size: 0.75rem;
+}
+
+.dropdown-menu{
+    position: absolute !important;
+    padding: 0.5rem !important;
+    min-width: 15rem !important;
+    background-color: #fff;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    font-size: 0.95em !important;
+}
+
+.dropdown-menu li{
+    padding: 0.35rem 1.25rem !important;
+}
+
+.dropdown-menu li a, .nav-link a i {
+    background: transparent !important;
+}
+
+.hover-effected{
+    transition: all 0.35s ease;
+}
