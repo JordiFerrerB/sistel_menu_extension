@@ -8,11 +8,8 @@ Create and custom simple navigation menus for your Qlik Sense apps.
 
 <img src="/src/data/Ejemplo.PNG" alt="Menu example" width="500"/>
 
-<<<<<<< HEAD
-=======
  - Download the latest version from [here](https://github.com/JordiFerrerB/sistel_menu_extension/raw/master/build/Sistel_Menu_V2_latest.zip)
 
->>>>>>> 7963341ab8a4155c668074c98b1815a8ad6bcbf8
 **Customization options**
 * Colors
   * Background color
