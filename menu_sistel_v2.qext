@@ -4,6 +4,7 @@
 	"icon" : "",
 	"type" : "visualization",
 	"version": "2.1.0",
+	"license": "MIT",
 	"preview" : "",
 	"author": "Jordi Ferrer",
 	"meta": {
