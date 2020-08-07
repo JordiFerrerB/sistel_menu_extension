@@ -41,7 +41,11 @@
 
 .dropdown-menu{
     position: absolute !important;
+<<<<<<< HEAD
     padding: 0.5rem !important;
+=======
+    padding: 0.35rem !important;
+>>>>>>> 7963341ab8a4155c668074c98b1815a8ad6bcbf8
     min-width: 15rem !important;
     background-color: #fff;
     border-radius: 0 !important;
