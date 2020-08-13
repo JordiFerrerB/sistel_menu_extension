@@ -3,14 +3,13 @@ define(['qlik', 'jquery',
     'css!./src/css/main.css',
     'css!./src/css/scoped-bootstrap.css',
     'text!./src/partials/template.ng.html',
-    './src/js/bootstrap.min'
+    './src/js/bootstrap.bundle.min'
 ], 
 
 function(qlik, $, props, initProps, cssContent, bootstrapCSS ,htmlTemplate, bootstrapjs){
     'use strict';
 
     $( '<style>' ).html(cssContent).appendTo( 'head' );
-    //$( '<style>' ).html(bootstrapCSS).appendTo( 'head' );
 
     return {
         definition: props,
