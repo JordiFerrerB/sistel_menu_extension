@@ -53,16 +53,19 @@ function(qlik, $, props, initProps, cssContent, bootstrapCSS ,htmlTemplate, boot
                 }
 
                 //Close submenu on mouseleave
-                if(event.target.className.includes('dropdown-toggle') && $(event.target).data('toggle') != 'dropdown'){
-                    $(event.target).dropdown('toggle');
+                if(event.target.className.includes('submenu-option')){
+                    var parentMenu = $(event.target).parent('.dropdown-menu');
+                    var numHoverItems = parentMenu.find('.submenu-option:hover').length;
+                    console.log("Leaving with " + numHoverItems + " items selected");
+                    
+                    if(numHoverItems == 0){
+                        var label = parentMenu.attr('aria-labelledby');
+                        $('#' + label).dropdown('toggle');
+                        console.log(label);
+                        //Prevent menu from overlapping unwanted objects
+                        $(document.body).find(".qv-object-menu_sistel_v2").parent().parent().parent().parent().css("z-index","1");
+                    }
                 }
-                else if(event.target.className.includes('dropdown-menu')){
-                    var label = $(event.target).attr('aria-labelledby');
-                    $('#'+ label).dropdown('toggle');
-                }
-
-                //Prevent menu from overlapping unwanted objects
-                $(document.body).find(".qv-object-menu_sistel_v2").parent().parent().parent().parent().css("z-index","1");
             }
         }]
     }

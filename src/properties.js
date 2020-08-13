@@ -146,7 +146,7 @@ define(['qlik', 'text!./data/lui-icons.json'], function(qlik, luiIcons){
                 allowAdd: true,
                 allowRemove: true,
                 allowMove: true,
-                addTranslation: 'Añadir submenú',
+                addTranslation: 'Add submenu',
                 items: {
                     titulo: {
                         type: "string",
