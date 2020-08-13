@@ -56,12 +56,10 @@ function(qlik, $, props, initProps, cssContent, bootstrapCSS ,htmlTemplate, boot
                 if(event.target.className.includes('submenu-option')){
                     var parentMenu = $(event.target).parent('.dropdown-menu');
                     var numHoverItems = parentMenu.find('.submenu-option:hover').length;
-                    console.log("Leaving with " + numHoverItems + " items selected");
                     
                     if(numHoverItems == 0){
                         var label = parentMenu.attr('aria-labelledby');
                         $('#' + label).dropdown('toggle');
-                        console.log(label);
                         //Prevent menu from overlapping unwanted objects
                         $(document.body).find(".qv-object-menu_sistel_v2").parent().parent().parent().parent().css("z-index","1");
                     }
