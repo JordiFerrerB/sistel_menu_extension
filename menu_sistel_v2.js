@@ -19,8 +19,6 @@ define([
 ) {
   "use strict";
 
-  $("<style>").html(cssContent).appendTo("head");
-
   return {
     definition: props,
     initialProperties: initProps,
@@ -28,10 +26,6 @@ define([
     controller: [
       "$scope",
       function ($scope) {
-        $scope.initialize = function () {
-          //$(document.body).find(".qv-object-menu_sistel_v2").parent().parent().parent().parent().css("z-index","2147483629");
-        };
-
         $scope.navigate = function (object) {
           if (object.isLocalSheet) {
             qlik.navigation.gotoSheet(object.hoja_destino);
@@ -49,19 +43,35 @@ define([
           };
 
           //Allow submenus to overlap other objects
-          $(document.body)
-            .find(".qv-object-menu_sistel_v2")
-            .parent()
-            .parent()
-            .parent()
-            .parent()
-            .css("z-index", "2147483629");
+          $scope.setObjectIndex(2147483629);
 
           //Add hover styles
           if (event.target.className.includes("hover-effected")) {
             $(event.target).css(style);
           }
         };
+
+        $scope.overlapCollapsedMenu = function(menu){
+          var isExpanded = $('.menu-sistel .navbar-toggler').attr('aria-expanded');
+          var index;
+          if(isExpanded == "false"){ //Expanding menu
+            index = 2147483629;
+          }
+          else{
+            index = 0; //Collapsing menu
+          }
+          $scope.setObjectIndex(index);
+        }
+
+        $scope.setObjectIndex = function(index){
+          $(document.body)
+            .find(".qv-object-menu_sistel_v2")
+            .parent()
+            .parent()
+            .parent()
+            .parent()
+            .css("z-index", index);
+        }
 
         $scope.hoverExitEvent = function (event) {
           var style = {
@@ -83,14 +93,11 @@ define([
               var label = parentMenu.attr("aria-labelledby");
               $("#" + label).dropdown("toggle");
               //Prevent menu from overlapping unwanted objects
-              $(document.body)
-                .find(".qv-object-menu_sistel_v2")
-                .parent()
-                .parent()
-                .parent()
-                .parent()
-                .css("z-index", "1");
+              $scope.setObjectIndex(1);
             }
+          }
+          else{
+            $scope.setObjectIndex(1);
           }
         };
       },
