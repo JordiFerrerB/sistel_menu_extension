@@ -38,3 +38,11 @@ Create and custom simple navigation menus for your Qlik Sense apps.
   * Add an icon
   * Specify destination sheet
   * Add submenus
+
+## Examples
+  * External URL navigation
+    <img src="/src/data/ejemplo_URLs.PNG" alt="Logo Sistel" width="125"/>
+  * Sheet Navigation
+    <img src="/src/data/ejemplo_Hoja.PNG" alt="Logo Sistel" width="125"/>
+  * Responsive menu
+    <img src="/src/data/ejemplo_Responsive.png" alt="Logo Sistel" width="125"/>
