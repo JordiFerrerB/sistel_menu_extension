@@ -8,24 +8,9 @@ Create and custom simple navigation menus for your Qlik Sense apps.
 
 <img src="/src/data/Ejemplo.PNG" alt="Menu example" width="500"/>
 
-## Download
-
  - Download the latest version from [here](https://github.com/JordiFerrerB/sistel_menu_extension/raw/master/build/sis-customMenu_latest.zip)
- 
-## Installation
-- Do the following:
-  * Open a Windows Explorer window and navigate to ..\Users\<UserName>\Documents\Qlik\Sense\Extensions.
-  * Copy and extract the .zip file you downloaded to this folder.
- 
- - Visit [Qlik Sense Help](https://help.qlik.com/en-US/sense-developer/February2020/Subsystems/Extensions/Content/Sense_Extensions/CustomComponents/custom-components-installing.htm) for more details.
 
-## Features
-* Responsiveness
-* External URLs
-* Sheet navigation
-* Customization
-
-## Customization options
+**Customization options**
 * Colors
   * Background color
   * Font color
@@ -37,14 +22,4 @@ Create and custom simple navigation menus for your Qlik Sense apps.
   * Choose a link title
   * Add an icon
   * Specify destination sheet
-  * Add submenus
-
-## Examples
-* External URL navigation
- <img src="/src/data/ejemplo_URLs.PNG" alt="External URLs  example" width="225"/>
- 
-* Sheet Navigation
- <img src="/src/data/ejemplo_Hoja.PNG" alt="Sheet navigation example" width="225"/>
- 
-* Responsive menu
- <img src="/src/data/ejemplo_Responsive.PNG" alt="Responsive menu example" width="400"/>
+  * _Optional_ Add submenus
