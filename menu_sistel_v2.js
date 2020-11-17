@@ -46,9 +46,12 @@ function(qlik, $, props, initProps, cssContent, bootstrapCSS ,htmlTemplate, boot
                     'color' :  $scope.layout.color_fuente.color + ' !important'
                 }
 
+                var currSheetId = qlik.navigation.getCurrentSheetId().sheetId;
+
                 //Remove hover styles
-                if(event.target.className.includes('hover-effected')){
+                if(event.target.className.includes('hover-effected') && !event.target.id.includes(currSheetId)){
                     $(event.target).css(style);
+                    return;
                 }
 
                 //Close submenu on mouseleave
@@ -72,7 +75,7 @@ function(qlik, $, props, initProps, cssContent, bootstrapCSS ,htmlTemplate, boot
                         'background-color': $scope.layout.color_fondo_resaltado.color + ' !important',
                         'color' : $scope.layout.color_fuente_resaltada.color + ' !important'
                     };
-                    var currSheetId = '#' + qlik.navigation.getCurrentSheetId().sheetId;
+                    var currSheetId = '#a-' + qlik.navigation.getCurrentSheetId().sheetId;
                     $(currSheetId).css(style);
                 }
                
