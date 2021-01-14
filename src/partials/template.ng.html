@@ -1,21 +1,23 @@
-<nav class="container-fluid menu-sistel navbar bootstrap-style" ng-init="initialize()" ng-style="{background: layout.color_fondo.color,color : layout.color_fuente.color}">
-    <a class="navbar-brand bootstrap-style" ng-show="layout.visibilidad_logo">{{layout.marca_menu}}</a>
-    <ul class="nav navbar-nav bootstrap-style">
-        <li class="nav-item bootstrap-style" ng-repeat="menu in layout.objetos_menu" ng-mouseenter="hoverEnterEvent($event)" ng-mouseleave="hoverExitEvent($event)" ng-show="menu.visible" id="li-{{menu.hoja_destino}}" ng-class="{dropdown: 'menu.objetos_submenu > 0'}" ng-initialize="hover = false">
-            <!-- OPCIÓN SIN SUBMENÚS -->
-            <a id="a-{{menu.hoja_destino}}" class="nav-link hover-effected bootstrap-style" ng-show="menu.objetos_submenu.length == 0" ng-click="navigate(menu.hoja_destino);">
-                <i class="lui-icon lui-icon--{{menu.icono}} mr-2"></i>
-                {{menu.titulo}}
-            </a>
-            <!-- OPCIÓN CON SUBMENÚS -->
-            <a ng-show="menu.objetos_submenu.length > 0" id="a-{{menu.hoja_destino}}" class="nav-link dropdown-toggle hover-effected bootstrap-style"  role="button" id="{{$index + '-dropdown'}}" data-toggle="dropdown">
-                <i class="lui-icon lui-icon--{{menu.icono}} mr-2"></i>    
-                {{menu.titulo}}
-            </a>
-            <!-- Desplegable -->
-            <ul class="dropdown-menu collapse bootstrap-style" aria-labelledby="{{$index + '-dropdown'}}" ng-show="menu.objetos_submenu.length > 0" ng-style="{background:  layout.color_fondo.color,color : layout.color_fuente.color}">
-                <li class="hover-effected bootstrap-style submenu-option" ng-repeat="submenu in menu.objetos_submenu" ng-click="navigate(submenu.hoja_destino_submenu);hoverExitEvent($event);" ng-mouseenter="hoverEnterEvent($event)" ng-mouseleave="hoverExitEvent($event)"><a>{{submenu.titulo_submenu}}</a></li>
-            </ul>
-        </li>
-    </ul>
-</nav>
+<div class="menu-container">
+    <nav class="container-fluid menu-sistel navbar bootstrap-style" ng-init="initialize()" ng-style="{background: layout.color_fondo.color,color : layout.color_fuente.color}">
+        <a class="navbar-brand bootstrap-style" ng-show="layout.visibilidad_logo">{{layout.marca_menu}}</a>
+        <ul class="nav navbar-nav bootstrap-style">
+            <li class="nav-item bootstrap-style" ng-repeat="menu in layout.objetos_menu" ng-mouseenter="hoverEnterEvent($event)" ng-mouseleave="hoverExitEvent($event)" ng-show="menu.visible" id="li-{{menu.hoja_destino}}" ng-class="{dropdown: 'menu.objetos_submenu > 0'}" ng-initialize="hover = false">
+                <!-- OPCIÓN SIN SUBMENÚS -->
+                <a id="a-{{menu.hoja_destino}}" class="nav-link hover-effected bootstrap-style" ng-show="menu.objetos_submenu.length == 0" ng-click="navigate(menu.hoja_destino);">
+                    <i class="lui-icon lui-icon--{{menu.icono}} mr-2"></i>
+                    {{menu.titulo}}
+                </a>
+                <!-- OPCIÓN CON SUBMENÚS -->
+                <a ng-show="menu.objetos_submenu.length > 0" id="a-{{menu.hoja_destino}}" class="nav-link dropdown-toggle hover-effected bootstrap-style"  role="button" id="{{$index + '-dropdown'}}" data-toggle="dropdown">
+                    <i class="lui-icon lui-icon--{{menu.icono}} mr-2"></i>    
+                    {{menu.titulo}}
+                </a>
+                <!-- Desplegable -->
+                <ul class="dropdown-menu collapse bootstrap-style" aria-labelledby="{{$index + '-dropdown'}}" ng-show="menu.objetos_submenu.length > 0" ng-style="{background:  layout.color_fondo.color,color : layout.color_fuente.color}">
+                    <li class="hover-effected bootstrap-style submenu-option" ng-repeat="submenu in menu.objetos_submenu" ng-click="navigate(submenu.hoja_destino_submenu);hoverExitEvent($event);" ng-mouseenter="hoverEnterEvent($event)" ng-mouseleave="hoverExitEvent($event)"><a>{{submenu.titulo_submenu}}</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</div>
