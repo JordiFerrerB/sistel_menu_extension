@@ -19,6 +19,7 @@
     padding: 0 !important;
     transition: all 0.3s ease;
     justify-content: end !important;
+    box-sizing: border-box;
 }
 
 .navbar-brand {
@@ -28,17 +29,20 @@
 
 .navbar-nav, .navbar-nav ul { 
     display: flex;
+    height: 100%;
     flex-direction: row !important;
     flex-wrap: wrap;
-    transition: all 0.3s ease;
+    transition: all 0.25s ease;
 }
 
 .navbar-nav .nav-item{
+    height: 100%;
     padding: 0 !important;
     cursor: pointer;
 }
 .navbar-nav .nav-link {
     display: block;
+    height: 100%;
     cursor: pointer;
     padding: 0.5rem 1.25rem !important;
     font-size: 0.75rem !important;
@@ -50,19 +54,25 @@
 
 .dropdown-menu{
     position: absolute !important;
-    padding: 0.5rem !important;
+    padding: 0 !important;
     min-width: 15rem !important;
+    height: auto !important;
     background-color: #fff;
     border-radius: 0 !important;
+    border-top: 2px solid !important;
+    border-right: 0 !important;
+    border-left: 0 !important;
+    border-bottom: 0 !important;
     margin: 0 !important;
     font-size: 0.95em !important;
 }
 
 .dropdown-menu li{
-    padding: 0.35rem 1.25rem !important;
+    padding: 8px 20px !important;
 }
 
 .dropdown-menu li a, .nav-link a i {
+    pointer-events: none;
     background: transparent !important;
 }
 

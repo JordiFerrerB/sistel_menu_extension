@@ -6,7 +6,7 @@ define(['qlik', 'jquery',
     './src/js/bootstrap.bundle.min'
 ], 
 
-function(qlik, $, props, initProps, cssContent, bootstrapCSS ,htmlTemplate, bootstrapjs){
+function(qlik, $, props, initProps, cssContent, bootstrapCSS ,htmlTemplate){
     'use strict';
 
     $( '<style>' ).html(cssContent).appendTo( 'head' );
@@ -16,11 +16,7 @@ function(qlik, $, props, initProps, cssContent, bootstrapCSS ,htmlTemplate, boot
         initialProperties: initProps,
         template: htmlTemplate,
         controller: ['$scope', function ($scope) {
-
-            $scope.initialize = function(){
-                //$(document.body).find(".qv-object-menu_sistel_v2").parent().parent().parent().parent().css("z-index","2147483629");
-            }
-
+            
             $scope.navigate = function(to){
                 qlik.navigation.gotoSheet(to);
             }
@@ -49,7 +45,7 @@ function(qlik, $, props, initProps, cssContent, bootstrapCSS ,htmlTemplate, boot
                 var currSheetId = qlik.navigation.getCurrentSheetId().sheetId;
 
                 //Remove hover styles
-                if(event.target.className.includes('hover-effected') && !event.target.id.includes(currSheetId)){
+                if(event.target.className.includes('hover-effected')  && !event.target.id.includes(currSheetId)){
                     $(event.target).css(style);
                     return;
                 }
@@ -62,6 +58,7 @@ function(qlik, $, props, initProps, cssContent, bootstrapCSS ,htmlTemplate, boot
                     if(numHoverItems == 0){
                         var label = parentMenu.attr('aria-labelledby');
                         $('#' + label).dropdown('toggle');
+
                         //Prevent menu from overlapping unwanted objects
                         $(document.body).find(".qv-object-menu_sistel_v2").parent().parent().parent().parent().css("z-index","1");
                     }
@@ -73,6 +70,7 @@ function(qlik, $, props, initProps, cssContent, bootstrapCSS ,htmlTemplate, boot
                 function setHoverCurrentSheet(){
                     var style = {
                         'background-color': $scope.layout.color_fondo_resaltado.color + ' !important',
+                        // 'border-bottom': '2px solid ' + $scope.layout.color_fuente_resaltada.color,
                         'color' : $scope.layout.color_fuente_resaltada.color + ' !important'
                     };
                     var currSheetId = '#a-' + qlik.navigation.getCurrentSheetId().sheetId;
