@@ -37,32 +37,34 @@ function(qlik, $, props, initProps, cssContent, bootstrapCSS ,htmlTemplate){
             }
 
             $scope.hoverExitEvent = function(event){
+                const targetClass = $(event.target).attr('class');
+
+                //Close submenu on mouseleave
+                if(targetClass.includes('submenu-option')){
+                    const currentTargetClass = $(event.currentTarget).attr('class');
+                    var parentMenu = $(event.target).parent('.dropdown-menu');
+                    
+                    console.log('EXIT SUBMENU', currentTargetClass);
+                    if(!currentTargetClass.includes('submenu-option')){
+                        console.log('CLOSE!')
+                        var label = parentMenu.attr('aria-labelledby');
+                        $('#' + label).dropdown('toggle');
+                    }
+                }
+
                 var style = {
                     'background-color': $scope.layout.color_fondo.color + ' !important',
                     'color' :  $scope.layout.color_fuente.color + ' !important'
                 }
-
                 var currSheetId = qlik.navigation.getCurrentSheetId().sheetId;
 
                 //Remove hover styles
-                if(event.target.className.includes('hover-effected')  && !event.target.id.includes(currSheetId)){
+                if(targetClass.includes('hover-effected')  && !event.target.id.includes(currSheetId)){
                     $(event.target).css(style);
-                    return;
                 }
 
-                //Close submenu on mouseleave
-                if(event.target.className.includes('submenu-option')){
-                    var parentMenu = $(event.target).parent('.dropdown-menu');
-                    var numHoverItems = parentMenu.find('.submenu-option:hover').length;
-                    
-                    if(numHoverItems == 0){
-                        var label = parentMenu.attr('aria-labelledby');
-                        $('#' + label).dropdown('toggle');
-
-                        //Prevent menu from overlapping unwanted objects
-                        $(document.body).find(".qv-object-menu_sistel_v2").parent().parent().parent().parent().css("z-index","1");
-                    }
-                }
+                //Prevent menu from overlapping unwanted objects
+                $(document.body).find(".qv-object-menu_sistel_v2").parent().parent().parent().parent().css("z-index","1");
             }
 
             $(document).ready(()=>{
