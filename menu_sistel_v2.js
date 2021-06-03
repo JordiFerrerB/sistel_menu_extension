@@ -1,12 +1,10 @@
 define(['qlik', 'jquery',
     './src/properties', './src/initialproperties',
     'css!./src/css/main.css',
-    'css!./src/css/scoped-bootstrap.css',
-    'text!./src/partials/template.ng.html',
-    './src/js/bootstrap.bundle.min'
+    'text!./src/partials/template.ng.html'
 ], 
 
-function(qlik, $, props, initProps, cssContent, bootstrapCSS ,htmlTemplate){
+function(qlik, $, props, initProps, cssContent,htmlTemplate){
     'use strict';
 
     $( '<style>' ).html(cssContent).appendTo( 'head' );
@@ -27,11 +25,7 @@ function(qlik, $, props, initProps, cssContent, bootstrapCSS ,htmlTemplate){
                     'color' :  event.target.style.color = $scope.layout.color_fuente_resaltada.color + ' !important'
                 };
 
-                //Add hover styles
-                if(event.target.className.includes('hover-effected')){
-                    $(event.target).css(style);
-                }
-
+                $(event.target).css(style);
                 //Allow submenus to overlap other objects
                 $(document.body).find(".qv-object-menu_sistel_v2").parent().parent().parent().parent().css("z-index","2147483629");
             }
@@ -39,32 +33,46 @@ function(qlik, $, props, initProps, cssContent, bootstrapCSS ,htmlTemplate){
             $scope.hoverExitEvent = function(event){
                 const targetClass = $(event.target).attr('class');
 
-                //Close submenu on mouseleave
-                if(targetClass.includes('submenu-option')){
-                    const currentTargetClass = $(event.currentTarget).attr('class');
-                    var parentMenu = $(event.target).parent('.dropdown-menu');
-                    
-                    console.log('EXIT SUBMENU', currentTargetClass);
-                    if(!currentTargetClass.includes('submenu-option')){
-                        console.log('CLOSE!')
-                        var label = parentMenu.attr('aria-labelledby');
-                        $('#' + label).dropdown('toggle');
-                    }
-                }
-
                 var style = {
                     'background-color': $scope.layout.color_fondo.color + ' !important',
                     'color' :  $scope.layout.color_fuente.color + ' !important'
                 }
+
                 var currSheetId = qlik.navigation.getCurrentSheetId().sheetId;
 
                 //Remove hover styles
-                if(targetClass.includes('hover-effected')  && !event.target.id.includes(currSheetId)){
+                if(!event.target.id.includes(currSheetId)){
                     $(event.target).css(style);
+                }
+
+                //Close subenu
+                var positionOutOfSubmenu = $(event.relatedTarget).parents('.sistel-dropdown-menu').length == 0 ? true : false;
+                if(targetClass.includes('submenu-close-onexit') && positionOutOfSubmenu){
+                    var parentMenu = $(event.target).parents('.sistel-dropdown-menu');
+                    $(parentMenu[0]).addClass('hide');
+                    $(parentMenu[0]).removeClass('show');
                 }
 
                 //Prevent menu from overlapping unwanted objects
                 $(document.body).find(".qv-object-menu_sistel_v2").parent().parent().parent().parent().css("z-index","1");
+            }
+
+            $scope.toggleDropdown = function(index){
+                $(document.body).find(".qv-object-menu_sistel_v2").parent().parent().parent().parent().css("z-index","2147483629");
+                var dropdown = $('ul[data-dropdownoption="' + index + '-dropdown"]');
+                dropdown.toggleClass("hide");
+                dropdown.toggleClass("show");
+            }
+
+            // Toggle Sheet title visibility on property change
+            $scope.$watch('layout.opciones_hoja.oculta_menu', setSheetTitleVisibility);
+
+            function setSheetTitleVisibility(){
+                if($scope.layout.opciones_hoja.oculta_menu){
+                    $('.qv-panel-sheet .sheet-title-container').css({'display' : 'none'});
+                }else{
+                    $('.qv-panel-sheet .sheet-title-container').css({'display' : 'block'});
+                }
             }
 
             $(document).ready(()=>{
@@ -81,6 +89,7 @@ function(qlik, $, props, initProps, cssContent, bootstrapCSS ,htmlTemplate){
                
 
                 setHoverCurrentSheet();
+                setSheetTitleVisibility();
             });
         }]
     }

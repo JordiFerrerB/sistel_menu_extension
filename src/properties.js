@@ -29,11 +29,11 @@ define(['qlik', 'text!./data/lui-icons.json'], function(qlik, luiIcons){
 
     getSheets();
 
-    var menuColores = { 
+    var menuColores = {
         type: "items",
-        ref: "colores",
         label: "Colors",
-        items:  {
+        ref: "colors",
+        items: {
             color_fondo: {
                 label: "Background color",
                 ref: "color_fondo",
@@ -73,6 +73,31 @@ define(['qlik', 'text!./data/lui-icons.json'], function(qlik, luiIcons){
                     color: "#fffff",
                     index: "-1"
                 }
+            }
+        }
+    };
+
+    var propiedadesHoja = {
+        type : "items",
+        label : "Sheet options",
+        ref : "opciones_hoja",
+        items : {
+            ocultaMenuSuperior: {
+                label: "Hide Sheet Menu",
+                ref: "opciones_hoja.oculta_menu",
+                type: "boolean",
+                component: "switch",
+                defaultValue: false,
+                options: [
+                    {
+                        value: true,
+                        label: "Yes"
+                    },
+                    {
+                        value: false,
+                        label: "No"
+                    }
+                ]
             }
         }
     }
@@ -178,7 +203,7 @@ define(['qlik', 'text!./data/lui-icons.json'], function(qlik, luiIcons){
                 type: "boolean",
                 component: "switch",
                 label: "Visible",
-                ref: "visibilidad_logo",
+                ref: "logo.visibilidad_logo",
                 defaultValue: false,
                 options: [{
                     value: true,
@@ -191,8 +216,24 @@ define(['qlik', 'text!./data/lui-icons.json'], function(qlik, luiIcons){
             titulo : {
                 type: "string",
                 label: "Brand",
-                ref: "marca_menu",
-                show: function(data){return data.visibilidad_logo}
+                ref: "logo.marca_menu",
+                show: function(data){return data.logo.visibilidad_logo}
+            },
+            grosor: {
+                type: "string",
+                component: "dropdown",
+                label: "Font weight",
+                ref: "logo.grosor",
+                defaultValue: "normal",
+                options: [{
+                    value: "normal",
+                    label: "Normal"
+                },
+                {
+                    value: "bold",
+                    label: "Bold"
+                }],
+                show: function(data){return data.logo.visibilidad_logo}
             }
         }
     }
@@ -201,13 +242,26 @@ define(['qlik', 'text!./data/lui-icons.json'], function(qlik, luiIcons){
         type: 'items',
         component: "accordion",
         items:{
-            settings: {
-                uses: "settings",
-                items: { 
-                    colores: menuColores,
-                    logo: brandOptions,
-                    menus: addMenus
+            menuItems: {
+                type: "items",
+                component: "expandable-items",
+                label: "Menu Items",
+                items: {
+                    brandOptions: brandOptions,
+                    menuOptions: addMenus
                 }
+            },
+            menuSettings: {
+                type: "items",
+                component: "expandable-items",
+                label: "Menu Settings",
+                items: {
+                    colors: menuColores,
+                    propiedadesHoja: propiedadesHoja
+                }
+            },
+            settings: {
+                uses: "settings"
             }
         }
     }
