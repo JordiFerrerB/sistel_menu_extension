@@ -18,7 +18,7 @@
     flex-wrap: wrap;
     padding: 0;
     transition: all 0.3s ease;
-    justify-content: end;
+    justify-content: flex-start;
     align-items: center;
     box-sizing: border-box;
 }
