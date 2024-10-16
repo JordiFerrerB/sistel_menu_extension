@@ -1,8 +1,7 @@
-<img src="/src/data/Sistel_Logo_Clásico_Negro.png" alt="Logo Sistel" width="125"/>
-BA Department</br>
-Jordi Ferrer (jferrer@sistel.es)
 
-# Sistel Qlik Sense menus
+Jordi Ferrer (jferrerbeltran@gmail.com)
+
+# Qlik Sense menus
 
 Create and custom simple navigation menus for your Qlik Sense apps.
 
