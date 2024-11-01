@@ -1,5 +1,5 @@
 
-Jordi Ferrer (jferrerbeltran@gmail.com)
+Jordi Ferrer
 
 # Qlik Sense menus
 
